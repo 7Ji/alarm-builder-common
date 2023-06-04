@@ -1,6 +1,7 @@
 should_build() { 
   # should be called inside the folder
   # #1 pkg name
+  # $dir_pkg_absolute must be set by outer function
   local build_pkg=$1
   (
     . PKGBUILD

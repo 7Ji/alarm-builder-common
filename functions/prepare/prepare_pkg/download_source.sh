@@ -5,12 +5,12 @@ download_source() {
   local SRCDEST=.
   local lib=
   (
+    local dir_pkg_absolute="$(readlink -f "${dir_pkg}")"
     for lib in "$LIBRARY"/*.sh; do
       source "$lib"
     done
     load_makepkg_config
     pushd "${dir_build}" > /dev/null
-    local dir_pkg_absolute="$(readlink -f "${dir_pkg}")"
     local build_pkg=
     for build_pkg in *; do
       if [[ -d "${build_pkg}" ]]; then

@@ -1,5 +1,5 @@
-relative_source packages/cross_download_source
-relative_source packages/build_host
+relative_source packages/cross_download_source.sh
+relative_source packages/build_host.sh
 
 packages() {
   local dir_build_absolute="$(readlink -f ${dir_build})"

@@ -23,7 +23,9 @@ patching() {
   local patch_file
   local patch_files=()
   for patch_file in *.patch; do
-    patch_files+=("$(readlink -f "${patch_file}")")
+    if [[ -f "${patch_file}" ]]; then
+      patch_files+=("$(readlink -f "${patch_file}")")
+    fi
   done
   pushd "${builddir}" >/dev/null
   for patch_file in "${patch_files[@]}"; do

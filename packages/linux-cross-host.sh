@@ -36,7 +36,10 @@ patching() {
 prepare() {
   cp config "${builddir}/.config"
   pushd "${builddir}" >/dev/null
-  scripts/setlocalversion --save-scmversion
+  if [[ -z "${localversion_simple}" ]]; then
+    # From 6.3, commit f6e09b07cc12a4d104bb19fe7566b0636f60c413 onwards, --scmversion was removed, we can simply skip this step
+    scripts/setlocalversion --save-scmversion
+  fi
   echo "-${pkgrel}" > localversion.10-pkgrel
   echo "${pkgname#linux}" > localversion.20-pkgname
   popd >/dev/null

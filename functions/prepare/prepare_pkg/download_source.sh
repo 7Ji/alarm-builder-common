@@ -16,10 +16,14 @@ download_source() {
         pushd "${build_pkg}" > /dev/null
         if should_build "${build_pkg}"; then
           echo "  -> Downloading source for ${build_pkg} before build.."
-          (
+          if (
             source_safe PKGBUILD
             download_sources novcs allarch
-          )
+          ); then
+            echo "  -> Downloaded source for ${build_pkg} before build"
+          else
+            echo "  -> Failed to download source for ${build_pkg} before build, will retry to download later when building"
+          fi
         fi
         popd > /dev/null
       fi

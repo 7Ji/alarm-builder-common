@@ -18,7 +18,7 @@ move_built_to_pkg() {
     else
       whitelist=()
     fi
-    if [[ ${arch[0]} == 'any']]; then
+    if [[ ${arch[0]} == 'any' ]]; then
       local arch_naming='any'
     else
       local arch_naming='aarch64'

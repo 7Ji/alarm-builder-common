@@ -18,6 +18,11 @@ move_built_to_pkg() {
     else
       whitelist=()
     fi
+    if [[ ${arch[0]} == 'any']]; then
+      local arch_naming='any'
+    else
+      local arch_naming='aarch64'
+    fi
     for i in "${pkgname[@]}"; do
       if [[ "${blacklist}" ]]; then
         should_build='yes'
@@ -45,11 +50,11 @@ move_built_to_pkg() {
       fi
       if [[ $(type -t pkgver) == 'function' ]]; then
         pkgfile_glob1="${i}-"
-        pkgfile_glob2="-${pkgrel}-aarch64${PKGEXT}"
+        pkgfile_glob2="-${pkgrel}-${arch_naming}${PKGEXT}"
         chmod -x "${pkgfile_glob1}"*"${pkgfile_glob2}"
         mv -vf "${pkgfile_glob1}"*"${pkgfile_glob2}" "${dir_pkg_absolute}/"
       else
-        pkgfile="${i}-${pkgver}-${pkgrel}-aarch64${PKGEXT}"
+        pkgfile="${i}-${pkgver}-${pkgrel}-${arch_naming}${PKGEXT}"
         chmod -x "${pkgfile}"
         mv -vf "${pkgfile}" "${dir_pkg_absolute}/"
       fi

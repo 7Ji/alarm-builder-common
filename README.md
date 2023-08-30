@@ -45,8 +45,10 @@ Without any further settings, running `./build.sh` or `bash -e build.sh` would:
 You can add packages, usually from AUR pacakges, under a folder `build`, the library would build them lazily and install them into the root, e.g.
 ```
 mkdir build
+pushd build
 git submodule add https://aur.archlinux.org/linux-aarch64-orangepi5.git
 git submodule add https://aur.archlinux.org/linux-firmware-orangepi.git
+popd
 ```
 Submodule or not does not affect the building routine, but you need to make sure the folder structure is like the following if you add local packages:
 ```

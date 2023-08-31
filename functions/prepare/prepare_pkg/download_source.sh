@@ -1,7 +1,7 @@
 relative_source should_build.sh
 download_source() {
   echo " => Downloading source before build"
-  local LIBRARY="${LIBRARY:-'/usr/share/makepkg'}"
+  local LIBRARY="${LIBRARY:-/usr/share/makepkg}"
   local SRCDEST=.
   local lib=
   (

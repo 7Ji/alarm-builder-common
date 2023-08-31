@@ -31,7 +31,7 @@ Without any further settings, running `./build.sh` or `bash -e build.sh` would:
  - `pacstrap` the following package (groups) into a temporary root: `base`, `openssh`, `sudo`, `vim`
  - Do basic settings, e.g.:
    - setup fstab
-   - setup locales, default is enableing {zh_CN,en_{GB,US}}.UTF-8 and using zh_CN.UTF-8 as locale
+   - setup locales, default is enableing {zh_CN,en_{GB,US}}.UTF-8 and using en_GB.UTF-8 as locale
    - enable network and ssh services
    - setup users, sudoers and passwords
    - setup timezone, default is Asia/Shanghai
